@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:text="Person #1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="121dp"
+        android:id="@+id/Person1" />
+
+    <Button
+        android:text="Person #2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Person1"
+        android:layout_alignStart="@+id/Person1"
+        android:id="@+id/Person2" />
+
+    <Button
+        android:text="Person #3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Person2"
+        android:layout_alignStart="@+id/Person2"
+        android:id="@+id/Person3" />
+
+    <Button
+        android:text="Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AddPerson"
+        android:layout_below="@+id/Person3"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

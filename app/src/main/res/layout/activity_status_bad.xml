@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:id="@+id/StatusPrompt"
+        android:textSize="20sp" />
+
+    <TextView
+        android:text="Issue Detected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Status"
+        android:textSize="36sp"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/StatusPrompt"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Get location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Status"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="113dp"
+        android:id="@+id/Location" />
+
+    <Button
+        android:text="Call "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Call"
+        android:layout_below="@+id/Location"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Call 911"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Call"
+        android:layout_alignEnd="@+id/Call"
+        android:layout_marginTop="41dp"
+        android:id="@+id/Call911" />
+</RelativeLayout>
