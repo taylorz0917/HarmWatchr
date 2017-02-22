@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="Status"
+        android:text="@string/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="81dp"
         android:id="@+id/prompt"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText" />
+        android:textSize="20sp" />
 
     <TextView
-        android:text="Good"
+        android:text="@string/good"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/status"
@@ -23,35 +21,31 @@
         android:textColor="@android:color/holo_green_dark"
         android:layout_marginTop="13dp"
         android:layout_below="@+id/prompt"
-        android:layout_centerHorizontal="true"
-        tools:ignore="HardcodedText" />
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Get location"
+        android:text="@string/get_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/status"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="113dp"
-        android:id="@+id/location"
-        tools:ignore="HardcodedText" />
+        android:id="@+id/location" />
 
     <Button
-        android:text="Call"
+        android:text="@string/call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/call"
         android:layout_below="@+id/location"
-        android:layout_alignStart="@+id/status"
-        tools:ignore="HardcodedText" />
+        android:layout_alignStart="@+id/status" />
 
     <Button
-        android:text="Back"
+        android:text="@string/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/back"
-        tools:ignore="HardcodedText" />
+        android:id="@+id/back" />
 
 </RelativeLayout>

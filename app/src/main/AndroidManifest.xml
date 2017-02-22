@@ -18,6 +18,9 @@
         <activity android:name=".People">
 
         </activity>
+        <activity android:name=".Add">
+
+        </activity>
         <activity android:name=".Status">
 
         </activity>
