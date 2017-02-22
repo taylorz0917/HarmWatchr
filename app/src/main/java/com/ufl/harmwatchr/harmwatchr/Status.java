@@ -1,5 +1,14 @@
-package com.ufl.harmwarchr.harmwatchr;
+package com.ufl.harmwatchr.harmwatcher;
 
-public class Status {
-    //Status stuff goes here
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class Status extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_status_good);
+
+    }
 }
