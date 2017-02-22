@@ -65,4 +65,5 @@
         android:background="@android:color/holo_red_light"
         android:textSize="13sp"
         tools:ignore="HardcodedText" />
+
 </RelativeLayout>

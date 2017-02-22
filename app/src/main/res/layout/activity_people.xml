@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/sign-out"
+        android:id="@+id/signout"
         tools:ignore="HardcodedText" />
+
 </RelativeLayout>
