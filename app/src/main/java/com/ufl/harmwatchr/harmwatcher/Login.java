@@ -21,6 +21,9 @@ public class Login extends AppCompatActivity {
         activity_peopleLink.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Verify login is in DB (In Progress.)
+
+                //Open People view
                 Intent activity_peopleIntent = new Intent(Login.this, People.class);
                 Login.this.startActivity(activity_peopleIntent);
             }

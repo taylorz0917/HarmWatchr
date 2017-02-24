@@ -22,6 +22,10 @@ public class Add extends AppCompatActivity {
         activity_peopleLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Add child to DB (In Progress.)
+
+
+                //Take to People view
                 Intent activity_peopleIntent = new Intent(Add.this, People.class);
                 Add.this.startActivity(activity_peopleIntent);
             }
