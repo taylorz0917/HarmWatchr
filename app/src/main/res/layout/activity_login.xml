@@ -21,6 +21,7 @@
         android:id="@+id/Prompt" />
 
     <EditText
+        android:text="@string/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
@@ -30,19 +31,30 @@
         android:layout_centerHorizontal="true"
         android:background="@android:color/darker_gray"
         android:ems="20"
-        android:minHeight="50dp" />
+        android:minHeight="50dp"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/pwprompt"
+        android:text="@string/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Email"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="20"
-        android:layout_below="@+id/Email"
+        android:layout_below="@+id/pwprompt"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/Password"
         android:minHeight="50dp"
-        android:background="@android:color/darker_gray" />
+        android:background="@android:color/darker_gray"
+        tools:ignore="LabelFor" />
 
     <Button
         android:text="@string/login"

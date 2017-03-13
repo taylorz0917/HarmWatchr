@@ -4,12 +4,20 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <Button
+        android:text="@string/signout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/signout" />
+
+    <Button
         android:text="Person #1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/signout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="121dp"
+        android:layout_marginTop="80dp"
         android:id="@+id/Person1"
         tools:ignore="HardcodedText" />
 
@@ -38,13 +46,5 @@
         android:id="@+id/AddPerson"
         android:layout_below="@+id/Person3"
         android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="@string/signout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/signout" />
 
 </RelativeLayout>

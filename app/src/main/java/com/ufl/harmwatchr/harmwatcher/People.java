@@ -14,7 +14,7 @@ public class People extends AppCompatActivity {
         setContentView(R.layout.activity_people);
 
         final Button activity_peopleLink = (Button) findViewById(R.id.Person1);
-        final Button activity_loginLink = (Button) findViewById(R.id.signout);
+        final Button activity_signoutLink = (Button) findViewById(R.id.signout);
         final Button activity_addLink = (Button) findViewById(R.id.AddPerson);
 
         //If Person is chosen -> Check their status.
@@ -39,7 +39,7 @@ public class People extends AppCompatActivity {
         });
 
         //If Sign Out is chosen.
-        activity_addLink.setOnClickListener(new View.OnClickListener(){
+        activity_signoutLink.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //Open login view

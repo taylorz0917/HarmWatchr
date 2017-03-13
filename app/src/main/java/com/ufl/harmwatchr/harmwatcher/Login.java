@@ -13,7 +13,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Click login button -> Open People
+        //Click login button --> Open People
         final EditText email = (EditText) findViewById(R.id.Email);
         final EditText pword = (EditText) findViewById(R.id.Password);
         final Button activity_peopleLink = (Button) findViewById(R.id.Login);
@@ -23,9 +23,11 @@ public class Login extends AppCompatActivity {
             public void onClick(View v){
                 //Verify login is in DB (In Progress.)
 
-                //Open People view
+                //If login is correct:  --> Open People view
                 Intent activity_peopleIntent = new Intent(Login.this, People.class);
                 Login.this.startActivity(activity_peopleIntent);
+
+                //Else:  --> Reject login, do nothing.
             }
 
         });

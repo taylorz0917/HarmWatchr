@@ -13,17 +13,18 @@ public class Status extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //If status is Good: (In Progress.)
-        setContentView(R.layout.activity_status_good);
-        //Else:
-        //setContentView(R.layout.activity_status_bad);
-        //Only add ems button if view = status_bad.
-        final Button ems = (Button) findViewById(R.id.ems);
+            setContentView(R.layout.activity_status_good);
+
+        /*Else:
+            setContentView(R.layout.activity_status_bad);
+            Only add ems button if view = status_bad.
+        */
+            final Button ems = (Button) findViewById(R.id.ems);
 
         //These buttons are in both views
         final Button activity_peopleLink = (Button) findViewById(R.id.back);
         final Button locate = (Button) findViewById(R.id.location);
         final Button call = (Button) findViewById(R.id.call);
-
 
 
         //If Back is pressed. (DONE)

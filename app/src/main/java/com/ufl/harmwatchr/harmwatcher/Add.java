@@ -17,15 +17,19 @@ public class Add extends AppCompatActivity {
         final Button activity_peopleLink = (Button) findViewById(R.id.submit);
         final EditText name = (EditText) findViewById(R.id.name);
         final EditText age = (EditText) findViewById(R.id.age);
-
+        final EditText phone = (EditText) findViewById(R.id.phone);
 
         activity_peopleLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Add child to DB (In Progress.)
+                /*
+                    Add child to DB (In Progress.)
+                    add name
+                    add age
+                    add phone
+                    Take to People view
+                */
 
-
-                //Take to People view
                 Intent activity_peopleIntent = new Intent(Add.this, People.class);
                 Add.this.startActivity(activity_peopleIntent);
             }
