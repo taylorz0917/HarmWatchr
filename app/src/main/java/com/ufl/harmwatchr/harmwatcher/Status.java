@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.content.pm.PackageManager;
 
 public class Status extends AppCompatActivity {
 
@@ -51,8 +52,19 @@ public class Status extends AppCompatActivity {
         call.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                /*
                 //Retreive watchee's phone number
                 //Dial phone number
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:0377778888"));
+
+                if (ActivityCompat.checkSelfPermission(Status.this,
+                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+                */
             }
 
         });
