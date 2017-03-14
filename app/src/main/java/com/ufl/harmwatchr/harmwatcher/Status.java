@@ -11,15 +11,14 @@ public class Status extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //If status is Good: (In Progress.)
-            setContentView(R.layout.activity_status_good);
+        setContentView(R.layout.activity_status_good);
+        //^^If status is Good: (In Progress.)
 
         /*Else:
             setContentView(R.layout.activity_status_bad);
             Only add ems button if view = status_bad.
         */
-            final Button ems = (Button) findViewById(R.id.ems);
+            //final Button ems = (Button) findViewById(R.id.ems);
 
         //These buttons are in both views
         final Button activity_peopleLink = (Button) findViewById(R.id.back);
@@ -43,28 +42,29 @@ public class Status extends AppCompatActivity {
         locate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Do Location stuff
+                //Pull location information
+                //Open location in maps application
             }
-
         });
 
         //If Call is pressed. (In Progress.)
         call.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Do Call stuff
+                //Retreive watchee's phone number
+                //Dial phone number
             }
 
         });
 
-        //If EMS is pressed. (In Progress.)
+        /*If EMS is pressed. (In Progress.)
         ems.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //Do EMS stuff
+                //Call EMS number
             }
 
-        });
+        });*/
 
 
     }

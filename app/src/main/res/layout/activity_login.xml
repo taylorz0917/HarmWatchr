@@ -65,7 +65,4 @@
         android:layout_marginTop="34dp"
         android:id="@+id/Login" />
 
-
-
-
 </RelativeLayout>
