@@ -62,7 +62,7 @@ public class Status extends AppCompatActivity {
             public void onClick(View v){
                 //Retreive watchee's phone number
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:0377778888"));
+                callIntent.setData(Uri.parse("tel:9543193505"));
 
                 if (ActivityCompat.checkSelfPermission(Status.this,
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {

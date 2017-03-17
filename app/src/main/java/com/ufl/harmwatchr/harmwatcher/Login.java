@@ -17,6 +17,7 @@ public class Login extends AppCompatActivity {
         final EditText email = (EditText) findViewById(R.id.Email);
         final EditText pword = (EditText) findViewById(R.id.Password);
         final Button activity_peopleLink = (Button) findViewById(R.id.Login);
+        final Button activity_registerLink = (Button) findViewById(R.id.Register);
 
         activity_peopleLink.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -28,6 +29,18 @@ public class Login extends AppCompatActivity {
                 Login.this.startActivity(activity_peopleIntent);
 
                 //Else:  --> Reject login, do nothing.
+            }
+
+        });
+
+        //take user to register page
+        activity_registerLink.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                Intent activity_registerIntent = new Intent(Login.this, Register.class);
+                Login.this.startActivity(activity_registerIntent);
+
             }
 
         });
