@@ -4,47 +4,53 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <Button
-        android:text="@string/signout"
+        android:id="@+id/signout"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/signout" />
+        android:layout_alignParentTop="true"
+        android:text="@string/signout" />
 
     <Button
-        android:text="Person #1"
+        android:id="@+id/Person1"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:id="@+id/Person1"
+        android:text="Person #1"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:text="Person #2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Person1"
-        android:layout_alignStart="@+id/Person1"
         android:id="@+id/Person2"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:text="Person #3"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Person2"
-        android:layout_alignStart="@+id/Person2"
-        android:id="@+id/Person3"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Person1"
+        android:text="Person #2"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:text="@string/add"
+        android:id="@+id/Person3"
+        style="@android:style/Widget.Button.Transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Person2"
+        android:layout_below="@+id/Person2"
+        android:text="Person #3"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/AddPerson"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/AddPerson"
         android:layout_below="@+id/Person3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/add" />
 
 </RelativeLayout>

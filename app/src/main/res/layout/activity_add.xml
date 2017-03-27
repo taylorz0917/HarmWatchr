@@ -4,50 +4,66 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/name"
+        android:labelFor="@id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="@string/name"
-        android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:background="@android:color/darker_gray"
-        android:id="@+id/name" />
+        android:layout_marginTop="102dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        android:textAlignment="center"
+        android:textEditNoPasteWindowLayout="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="@string/age"
-        android:ems="10"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/darker_gray"
         android:id="@+id/age"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/name"
-        android:layout_alignStart="@+id/name" />
-
-    <EditText
+        android:labelFor="@id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Phone"
-        android:ems="10"
-        android:background="@android:color/darker_gray"
+        android:layout_alignStart="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/age"
+        android:textAlignment="center"
+        android:textEditNoPasteWindowLayout="@android:style/Widget.DeviceDefault.EditText" />
+
+    <EditText
         android:id="@+id/phone"
-        tools:ignore="HardcodedText"
+        android:labelFor="@id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/age"
         android:layout_below="@+id/age"
-        android:layout_alignStart="@+id/age" />
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:text="Phone"
+        android:textAlignment="center"
+        android:textEditNoPasteWindowLayout="@android:style/Widget.DeviceDefault.EditText"
+        tools:ignore="HardcodedText" />
 
     <Button
-        android:text="@string/submit"
+        android:id="@+id/submit"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/submit"
         android:layout_below="@+id/phone"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="45dp"
+        android:text="@string/submit" />
+
+    <Button
+        android:id="@+id/back"
+        style="@android:style/Widget.Button.Transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/back" />
 
 </RelativeLayout>

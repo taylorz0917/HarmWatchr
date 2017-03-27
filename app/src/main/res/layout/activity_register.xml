@@ -1,116 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-        android:text="Register Here!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/status"
-        android:textSize="36sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:labelFor="@id/status"
+        android:text="@string/register_here"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/prompt"
-        android:layout_centerHorizontal="true" />
+        android:textSize="36sp" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="First Name"
-        android:ems="10"
-        android:layout_marginTop="120dp"
-        android:background="@android:color/darker_gray"
         android:id="@+id/first_name"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Last Name"
+        android:layout_below="@+id/status"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         android:ems="10"
-        android:background="@android:color/darker_gray"
+        android:inputType="textPersonName"
+        android:labelFor="@id/first_name"
+        android:selectAllOnFocus="true"
+        android:text="@string/first_name"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
+
+    <EditText
         android:id="@+id/last_name"
-        android:layout_marginTop="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/first_name"
-        android:layout_alignStart="@+id/first_name" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:labelFor="@id/last_name"
+        android:selectAllOnFocus="true"
+        android:text="@string/last_name"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="@string/age"
-        android:ems="10"
-        android:background="@android:color/darker_gray"
         android:id="@+id/age"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/last_name"
-        android:layout_alignStart="@+id/last_name" />
+        android:ems="10"
+        android:inputType="textPersonName|number"
+        android:labelFor="@id/age"
+        android:selectAllOnFocus="true"
+        android:text="@string/age"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Email"
-        android:ems="10"
-        android:background="@android:color/darker_gray"
         android:id="@+id/email"
-        android:layout_marginTop="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/age"
-        android:layout_alignStart="@+id/age" />
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:labelFor="@id/email"
+        android:selectAllOnFocus="true"
+        android:text="@string/email"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Phone"
-        android:ems="10"
-        android:background="@android:color/darker_gray"
         android:id="@+id/phone"
-        tools:ignore="HardcodedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/email"
-        android:layout_alignStart="@+id/email"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="30dp" />
+        android:ems="10"
+        android:inputType="phone"
+        android:labelFor="@id/phone"
+        android:text="@string/phone"
+        android:textAlignment="center"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Username"
-        android:ems="10"
-        android:background="@android:color/darker_gray"
         android:id="@+id/username"
-        tools:ignore="HardcodedText"
-        android:layout_below="@+id/phone"
-        android:layout_alignStart="@+id/phone"
-        android:layout_marginTop="14dp" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Password"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone"
         android:ems="10"
-        android:background="@android:color/darker_gray"
+        android:inputType="text|textPersonName"
+        android:labelFor="@id/username"
+        android:text="@string/username"
+        android:textAlignment="center"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
+
+    <EditText
         android:id="@+id/password"
-        tools:ignore="HardcodedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/username"
-        android:layout_alignStart="@+id/username"
-        android:layout_marginTop="14dp" />
+        android:ems="10"
+        android:labelFor="@id/password"
+        android:text="@string/password"
+        android:textAlignment="center"
+        android:selectAllOnFocus="true"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="18sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText"
+        tools:ignore="HardcodedText,TextFields" />
 
     <Button
-        android:text="@string/submit"
+        android:id="@+id/register_submit"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/register_submit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="87dp" />
+        android:selectAllOnFocus="true"
+        android:labelFor="@id/register_submit"
+        android:layout_marginBottom="30dp"
+        android:text="@string/submit" />
+
+    <Button
+        android:id="@+id/back"
+        style="@android:style/Widget.Button.Transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:labelFor="@id/back"
+        android:text="@string/back" />
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HarmWatcher</string>
+    <string name="app_name">HarmWatchER</string>
     <string name="name">Name</string>
     <string name="age">Age</string>
     <string name="back">Back</string>
@@ -15,4 +15,10 @@
     <string name="submit">submit</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="register_here">Register Here!</string>
+    <string name="phone">Phone</string>
+    <string name="register">Register</string>
 </resources>

@@ -4,6 +4,7 @@
 
     <TextView
         android:text="@string/status"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -14,49 +15,54 @@
 
     <TextView
         android:text="@string/issue_detected"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/status"
         android:textSize="36sp"
         android:textColor="@android:color/holo_red_light"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/prompt"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="@string/get_location"
+        android:id="@+id/location"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/status"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="113dp"
-        android:id="@+id/location" />
+        android:text="@string/get_location" />
 
     <Button
-        android:text="@string/call"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/call"
+        style="@android:style/Widget.Button.Transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/location"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/call" />
 
     <Button
-        android:text="@string/back"
+        android:id="@+id/back"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/back" />
+        android:layout_alignParentTop="true"
+        android:text="@string/back" />
 
     <Button
-        android:text="@string/alert_ems"
+        android:id="@+id/ems"
+        style="@android:style/Widget.Button.Transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ems"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
-        android:background="@android:color/holo_red_light"
+        android:background="@android:drawable/ic_notification_overlay"
+        android:text="@string/alert_ems"
         android:textSize="13sp" />
 
 </RelativeLayout>
