@@ -42,10 +42,9 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="phone"
-        android:text="Phone"
+        android:text="@string/Phone"
         android:textAlignment="center"
-        android:textEditNoPasteWindowLayout="@android:style/Widget.DeviceDefault.EditText"
-        tools:ignore="HardcodedText" />
+        android:textEditNoPasteWindowLayout="@android:style/Widget.DeviceDefault.EditText" />
 
     <Button
         android:id="@+id/submit"
