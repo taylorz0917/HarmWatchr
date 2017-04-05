@@ -14,7 +14,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Click login button --> Open People
-        final EditText email = (EditText) findViewById(R.id.Email);
+        final EditText email = (EditText) findViewById(R.id.username);
         final EditText pword = (EditText) findViewById(R.id.Password);
         final Button activity_peopleLink = (Button) findViewById(R.id.Login);
         final Button activity_registerLink = (Button) findViewById(R.id.Register);

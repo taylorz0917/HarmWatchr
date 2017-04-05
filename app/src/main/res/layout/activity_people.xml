@@ -5,16 +5,19 @@
 
     <Button
         android:id="@+id/signout"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
         android:text="@string/signout" />
 
     <Button
         android:id="@+id/Person1"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signout"
@@ -25,7 +28,8 @@
 
     <Button
         android:id="@+id/Person2"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -35,7 +39,8 @@
 
     <Button
         android:id="@+id/Person3"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/Person2"
@@ -45,7 +50,8 @@
 
     <Button
         android:id="@+id/AddPerson"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Person3"

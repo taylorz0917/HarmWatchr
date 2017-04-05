@@ -27,7 +27,8 @@
 
     <Button
         android:text="@string/get_location"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/status"
@@ -37,7 +38,8 @@
 
     <Button
         android:text="@string/call"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/call"
@@ -45,11 +47,13 @@
         android:layout_centerHorizontal="true"/>
     <Button
         android:text="@string/back"
-        style="@android:style/Widget.Button.Transparent"
+        style="@style/Widget.AppCompat.Button"
+        android:alpha ="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
         android:id="@+id/back" />
 
 </RelativeLayout>
