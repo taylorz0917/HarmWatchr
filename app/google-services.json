@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "584182168949",
+    "firebase_url": "https://harmwatchrfirebasetest.firebaseio.com",
+    "project_id": "harmwatchrfirebasetest",
+    "storage_bucket": "harmwatchrfirebasetest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584182168949:android:42f37d17ac48ecc7",
+        "android_client_info": {
+          "package_name": "com.example.brianroytman.harmwatchr_firebase_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584182168949-lvnkl44ejdmfhsoimct56bm6mrrmgnht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.brianroytman.harmwatchr_firebase_test",
+            "certificate_hash": "de9d765ca2b8ff40beaa6b75ef3021aa2ebd012e"
+          }
+        },
+        {
+          "client_id": "584182168949-u3ru31kk96i4se3nengjdsc7tq5836h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaeSFO5UUzKobNcnubRTkwoKR9AKJXMKg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584182168949-u3ru31kk96i4se3nengjdsc7tq5836h0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584182168949:android:9399c64939c3a083",
+        "android_client_info": {
+          "package_name": "com.ufl.harmwatchr.harmwatcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584182168949-8ndvkbik03p1ji314kkghetngd7mavvn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ufl.harmwatchr.harmwatcher",
+            "certificate_hash": "c60ae60d0b3365aeaf787ef565b3d758878b3380"
+          }
+        },
+        {
+          "client_id": "584182168949-u3ru31kk96i4se3nengjdsc7tq5836h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaeSFO5UUzKobNcnubRTkwoKR9AKJXMKg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584182168949-u3ru31kk96i4se3nengjdsc7tq5836h0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
 <resources>
+    <string name="auth_failed">Incorrect username password combination.</string>
     <string name="app_name">HarmWatchER</string>
     <string name="name">Name</string>
     <string name="age">Age</string>
