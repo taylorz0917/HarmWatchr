@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     @Override
@@ -24,11 +25,14 @@ public class Login extends AppCompatActivity {
             public void onClick(View v){
                 //Verify login is in DB (In Progress.)
 
-                //If login is correct:  --> Open People view
-                Intent activity_peopleIntent = new Intent(Login.this, People.class);
-                Login.this.startActivity(activity_peopleIntent);
-
-                //Else:  --> Reject login, do nothing.
+                if(email.getText().toString().equals("admin"/*firebase call to login*/) && pword.getText().toString().equals("admin"/*firebase call to password*/)){
+                    Toast.makeText(getApplicationContext(), "Redirecting...", Toast.LENGTH_SHORT).show();
+                    Intent activity_peopleIntent = new Intent(Login.this, People.class);
+                    Login.this.startActivity(activity_peopleIntent);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
