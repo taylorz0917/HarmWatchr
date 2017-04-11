@@ -18,6 +18,7 @@ public class Add extends AppCompatActivity {
         final EditText name = (EditText) findViewById(R.id.name);
         final EditText age = (EditText) findViewById(R.id.age);
         final EditText phone = (EditText) findViewById(R.id.phone);
+        final Button activity_backButton = (Button) findViewById(R.id.back);
 
         activity_peopleLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +36,23 @@ public class Add extends AppCompatActivity {
             }
 
         });
+
+        activity_backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                    Add child to DB (In Progress.)
+                    add name
+                    add age
+                    add phone
+                    Take to People view
+                */
+
+                Intent activity_peopleIntent = new Intent(Add.this, People.class);
+                Add.this.startActivity(activity_peopleIntent);
+            }
+
+        });
+
     }
 }

@@ -74,8 +74,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         };
         // [END auth_state_listener]
 
-        //activity_peopleLink.setOnClickListener(this);
-
 
     }
     private void signIn(String email, String pword) {
@@ -95,6 +93,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                         if (task.isSuccessful()) {
                             //Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             Intent activity_peopleIntent = new Intent(Login.this, People.class);
                             Login.this.startActivity(activity_peopleIntent);
 
