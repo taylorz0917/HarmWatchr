@@ -14,7 +14,7 @@ public class People extends AppCompatActivity {
         setContentView(R.layout.activity_people);
 
         //for loop of people being watched by user... generate activity_peopleLink button
-            final Button activity_peopleLink = (Button) findViewById(R.id.Person1);
+        final Button activity_peopleLink = (Button) findViewById(R.id.Person1);
 
         final Button activity_signoutLink = (Button) findViewById(R.id.signout);
         final Button activity_addLink = (Button) findViewById(R.id.AddPerson);
