@@ -5,14 +5,14 @@ package com.ufl.harmwatchr.harmwatcher;
  */
 
 public class Parent {
-//    private String email;
+    private String email;
     private String firstName;
     private String lastName;
-//    private int phone;
+    private long phone;
     private int numChildren;
-//    private String ecFirst;
-//    private String ecLast;
-//    private int ecPhone;
+    private String emergencyContactFirstName;
+    private String emergencyContactLastName;
+    private long emergencyContactPhone;
     private String child1ID;
     private String child2ID;
     private String child3ID;
@@ -20,16 +20,24 @@ public class Parent {
     public Parent() {
 
     }
-    public Parent(String firstName, String lastName, int numChildren, String child1ID, String child2ID, String child3ID){
+    /*
+    public Parent(long phone, String firstName, String lastName, int numChildren, String child1ID, String child2ID, String child3ID){
         this.firstName = firstName;
         this.lastName = lastName;
-        //this.phone = phone;
+        this.phone = phone;
         this.numChildren = numChildren;
         this.child1ID = child1ID;
         this.child2ID = child2ID;
         this.child3ID = child3ID;
+    }*/
+
+    public String getEmail(){
+        return email;
     }
 
+    public void setEmail(String email){
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -51,13 +59,13 @@ public class Parent {
 
     }
 
-//    public int getPhone(){
-//        return phone;
-//    }
-//
-//    public void setPhone(int phone){
-//        this.phone = phone;
-//    }
+    public long getPhone(){
+        return phone;
+    }
+
+    public void setPhone(long phone){
+        this.phone = phone;
+    }
 
     public int getNumChildren() {
         return numChildren;
@@ -65,6 +73,31 @@ public class Parent {
 
     public void setNumChildren(int numChildren){
         this.numChildren = numChildren;
+    }
+
+
+    public String getEmergencyContactFirstName(){
+        return emergencyContactFirstName;
+    }
+
+    public void setEmergencyContactFirstName(String emergencyContactFirstName){
+        this.emergencyContactFirstName = emergencyContactFirstName;
+    }
+
+    public String getEmergencyContactLastName(){
+        return emergencyContactLastName;
+    }
+
+    public void setEmergencyContactLastName(String emergencyContactLastName){
+        this.emergencyContactLastName = emergencyContactLastName;
+    }
+
+    public long getEmergencyContactPhone(){
+        return emergencyContactPhone;
+    }
+
+    public void setEmergencyContactPhone(long emergencyContactPhone) {
+        this.emergencyContactPhone = emergencyContactPhone;
     }
 
     public String getChild1ID() {
