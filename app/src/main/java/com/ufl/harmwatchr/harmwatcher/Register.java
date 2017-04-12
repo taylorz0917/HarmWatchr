@@ -13,24 +13,26 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 //import com.google.firebase.auth.FirebaseUser;
 
-public class Register extends AppCompatActivity implements View.OnClickListener {
+public class Register extends AppCompatActivity{
 
     private EditText email;
     private EditText password;
-    private ProgressDialog progressDialog;
+    //private ProgressDialog progressDialog;
 
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
 
-        progressDialog = new ProgressDialog(this);
+        //progressDialog = new ProgressDialog(this);
 
         final Button buttonRegister = (Button) findViewById(R.id.register_submit);
         final Button back = (Button) findViewById(R.id.back);
@@ -41,9 +43,41 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         password = (EditText) findViewById(R.id.password);
         final EditText phone = (EditText) findViewById(R.id.phone);
 
+        buttonRegister.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                mAuth.createUserWithEmailAndPassword(email.getText().toString().trim(), password.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(Register.this, "Registration Unsuccessful - Please Try Again", Toast.LENGTH_SHORT).show();
 
-        buttonRegister.setOnClickListener(this);
+                        } else{
+                            Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            Intent activity_peopleIntent = new Intent(Register.this, People.class);
+                            Register.this.startActivity(activity_peopleIntent);
 
+                        }
+                    }
+                });
+            }
+        });
+
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user!=null){
+                    //Successful
+                    Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    //unsuccessful
+                    Toast.makeText(Register.this, "Registration Unsuccessful - Please Try Again", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
 
         back.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,43 +95,19 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    private void registerUser() {
-        String userEmail = email.getText().toString().trim();
-        String userPassword = password.getText().toString().trim();
-
-        if(TextUtils.isEmpty(userEmail)) {
-            //email is empty, stop function from further execution
-            Toast.makeText(this, "Please enter your email address", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(TextUtils.isEmpty(userPassword)) {
-            //password is empty, stop function from further execution
-            Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        progressDialog .setMessage("Registering User...");
-        progressDialog.show();
-
-        mAuth.createUserWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    Toast.makeText(Register.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                    Intent activity_peopleIntent = new Intent(Register.this, People.class);
-                    Register.this.startActivity(activity_peopleIntent);
-                }
-                else {
-                    Toast.makeText(Register.this, "Registration Unsuccessful - Please Try Again", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
-    public void onClick(View view) {
-        registerUser();
+    protected void onStop() {
+        super.onStop();
+        if(mAuthListener!=null){
+            mAuth.removeAuthStateListener(mAuthListener);
+
+        }
     }
+
 }
