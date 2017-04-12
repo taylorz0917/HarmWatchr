@@ -8,13 +8,13 @@
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
         android:labelFor="@id/status"
         android:text="@string/register_here"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:layout_alignBottom="@+id/back"
+        android:layout_alignStart="@+id/first_name" />
 
     <EditText
         android:id="@+id/first_name"
@@ -24,61 +24,61 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="@string/first_name"
         android:inputType="textPersonName"
         android:labelFor="@id/first_name"
         android:selectAllOnFocus="true"
-        android:text="@string/first_name"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
         android:id="@+id/last_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/first_name"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="@string/last_name"
         android:inputType="textPersonName"
         android:labelFor="@id/last_name"
         android:selectAllOnFocus="true"
-        android:text="@string/last_name"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/last_name"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="@string/phone"
         android:inputType="phone"
         android:labelFor="@id/phone"
-        android:text="@string/phone"
-        android:textAlignment="center"
         android:selectAllOnFocus="true"
+        android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/phone"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:labelFor="@id/email"
         android:selectAllOnFocus="true"
-        android:text="@string/email"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
 
@@ -86,17 +86,68 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textVisiblePassword"
         android:labelFor="@id/password"
-        android:text="@string/password"
-        android:textAlignment="center"
         android:selectAllOnFocus="true"
+        android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
-        android:textSize="18sp"
-        android:theme="@android:style/Widget.DeviceDefault.EditText"
-        tools:ignore="HardcodedText,TextFields" />
+        android:textSize="16sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
+
+
+    <EditText
+        android:id="@+id/emergencyContactFName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/emergency_contact_fname"
+        android:inputType="textPersonName"
+        android:labelFor="@id/emergencyContactFName"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="16sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
+
+
+    <EditText
+        android:id="@+id/emergencyContactLName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emergencyContactFName"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/e_c_last_name"
+        android:inputType="textPersonName"
+        android:labelFor="@id/emergencyContactLName"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="16sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
+
+
+    <EditText
+        android:id="@+id/emergencyContactPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emergencyContactLName"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/e_c_phone_number"
+        android:inputType="phone"
+        android:labelFor="@id/emergencyContactPhone"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large.Inverse"
+        android:textSize="16sp"
+        android:theme="@android:style/Widget.DeviceDefault.EditText" />
 
     <Button
         android:id="@+id/register_submit"
