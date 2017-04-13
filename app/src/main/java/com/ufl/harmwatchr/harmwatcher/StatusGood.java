@@ -10,11 +10,14 @@ import android.content.pm.PackageManager;
 import android.Manifest;
 import android.support.v4.app.ActivityCompat;
 
-public class Status extends AppCompatActivity {
+public class StatusGood extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_status_good);
         //^^If status is Good: (In Progress.)
 
@@ -37,8 +40,8 @@ public class Status extends AppCompatActivity {
             public void onClick(View v){
 
                 //Open people view
-                Intent activity_peopleIntent = new Intent(Status.this, People.class);
-                Status.this.startActivity(activity_peopleIntent);
+                Intent activity_peopleIntent = new Intent(StatusGood.this, People.class);
+                StatusGood.this.startActivity(activity_peopleIntent);
             }
 
         });
@@ -50,7 +53,7 @@ public class Status extends AppCompatActivity {
                 //input latitude, longitude from database
                 String uri = String.format("geo:%f,%f",59.915494, 30.409456);
                 Intent locate_Intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                Status.this.startActivity(locate_Intent);
+                StatusGood.this.startActivity(locate_Intent);
             }
         });
 
@@ -64,11 +67,11 @@ public class Status extends AppCompatActivity {
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
                 callIntent.setData(Uri.parse("tel:9543193505"));
 
-                if (ActivityCompat.checkSelfPermission(Status.this,
+                if (ActivityCompat.checkSelfPermission(StatusGood.this,
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
-                Status.this.startActivity(callIntent);
+                StatusGood.this.startActivity(callIntent);
             }
 
         });
@@ -81,7 +84,7 @@ public class Status extends AppCompatActivity {
                 Intent emsIntent = new Intent(Intent.ACTION_DIAL);
                 emsIntent.setData(Uri.parse("tel:911"));
 
-                if (ActivityCompat.checkSelfPermission(Status.this,
+                if (ActivityCompat.checkSelfPermission(StatusGood.this,
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }

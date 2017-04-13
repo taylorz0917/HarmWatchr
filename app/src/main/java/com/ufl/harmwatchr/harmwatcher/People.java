@@ -9,26 +9,34 @@ import android.view.View;
 import android.widget.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class People extends AppCompatActivity {
 
     private static final String TAG = "People";
 
-    //add Firebase Database stuff
+    /* Firebase initialization stuff */
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
     private  String userID;
-    //private ListView mListView;
+
+    String firstName;
+    String lastName;
+    String idString;
+    boolean inDanger;
+
+    /*Global Parent and Child Objects */
+    //Parent parentData;
+    //Child child1Data;
+    //Child child2Data;
+    //Child child3Data;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +75,18 @@ public class People extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Parent parentData = dataSnapshot.child("Users").child(userID).getValue(Parent.class);
+                System.out.println(parentData.getChild1ID());
+
                 if(parentData.getNumChildren() > 0) {
-                    Child childData = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
-                    System.out.println("Child info: "+childData.getChildFirstName()+childData.getChildLastName());
+                    Child child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                    firstName = child1Data.getChildFirstName();
+                    lastName  = child1Data.getChildLastName();
+                    idString  = parentData.getChild1ID();
+                    System.out.println("Child info: "+ firstName +  " " + lastName);
+
+                    /* Call Heart Rate Data method when you click Person 1 */
+
+
                 }
                 if(parentData!=null) {
                     System.out.println("User: " + userID + " Data: " + parentData.getFirstName() + " " + parentData.getLastName() +" "+ parentData.getNumChildren()+" "+ parentData.getPhone());
@@ -111,11 +128,31 @@ public class People extends AppCompatActivity {
         activity_peopleLink.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent activity_peopleIntent = new Intent(People.this, Status.class);
-                People.this.startActivity(activity_peopleIntent);
+
+                /*CALL HEART RATE/PARSE JSON METHOD */
+                boolean childInDanger;
+                childInDanger = heartRateData(firstName, lastName, idString);
+
+                if (!childInDanger) {
+                    Intent activity_peopleIntent = new Intent(People.this, StatusGood.class);
+                    People.this.startActivity(activity_peopleIntent);
+                }
+
+                else {
+                    Intent activity_peopleIntent = new Intent(People.this, StatusBad.class);
+                    People.this.startActivity(activity_peopleIntent);
+                }
+
+                // If inDanger is true...send to StatusBad.java page and send first text
+
+                /*Conditional statement to determine if Intent to StatusGood.Good or StatusGood.Bad */
+
+                //Intent activity_peopleIntent = new Intent(People.this, StatusGood.class);
+                //People.this.startActivity(activity_peopleIntent);
             }
 
         });
+
 
         //If Add is chosen.
         activity_addLink.setOnClickListener(new View.OnClickListener(){
@@ -140,6 +177,15 @@ public class People extends AppCompatActivity {
         });
 
     }
+
+    public boolean heartRateData(String fName, String lName, String id) {
+        System.out.println("Your child: " + fName + " " + lName + " " + id + " could be in danger.");
+        String url = fName + "-" + lName + "-" + id;
+
+        inDanger = true;
+        return inDanger;
+    }
+
 
     /*private void showData(DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
