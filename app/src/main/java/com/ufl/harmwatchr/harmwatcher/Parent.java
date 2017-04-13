@@ -8,11 +8,11 @@ public class Parent {
     private String email;
     private String firstName;
     private String lastName;
-    private long phone;
+    private String phone;
     private int numChildren;
     private String emergencyContactFirstName;
     private String emergencyContactLastName;
-    private long emergencyContactPhone;
+    private String emergencyContactPhone;
     private String child1ID;
     private String child2ID;
     private String child3ID;
@@ -59,11 +59,11 @@ public class Parent {
 
     }
 
-    public long getPhone(){
+    public String getPhone(){
         return phone;
     }
 
-    public void setPhone(long phone){
+    public void setPhone(String phone){
         this.phone = phone;
     }
 
@@ -92,11 +92,11 @@ public class Parent {
         this.emergencyContactLastName = emergencyContactLastName;
     }
 
-    public long getEmergencyContactPhone(){
+    public String getEmergencyContactPhone(){
         return emergencyContactPhone;
     }
 
-    public void setEmergencyContactPhone(long emergencyContactPhone) {
+    public void setEmergencyContactPhone(String emergencyContactPhone) {
         this.emergencyContactPhone = emergencyContactPhone;
     }
 

@@ -67,12 +67,17 @@ public class People extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Parent parentData = dataSnapshot.child("Users").child(userID).getValue(Parent.class);
+                if(parentData.getNumChildren() > 0) {
+                    Child childData = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                    System.out.println("Child info: "+childData.getChildFirstName()+childData.getChildLastName());
+                }
                 if(parentData!=null) {
                     System.out.println("User: " + userID + " Data: " + parentData.getFirstName() + " " + parentData.getLastName() +" "+ parentData.getNumChildren()+" "+ parentData.getPhone());
                     System.out.println("User: " + userID + " Emergency Contact info: " + parentData.getEmergencyContactFirstName() + " " + parentData.getEmergencyContactLastName() +" "+ parentData.getEmergencyContactPhone());
                     switch(parentData.getNumChildren()){
                         case 0:
                             System.out.println("No children yet.");
+                            break;
                         case 1:
                             System.out.println("Child1ID: "+parentData.getChild1ID());
                             break;
