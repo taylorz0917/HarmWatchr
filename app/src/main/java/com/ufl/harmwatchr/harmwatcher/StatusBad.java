@@ -123,16 +123,16 @@ public class StatusBad extends AppCompatActivity {
        ems.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
-                Intent emsIntent = new Intent(Intent.ACTION_DIAL);
-                emsIntent.setData(Uri.parse("tel:911"));
-
-                if (ActivityCompat.checkSelfPermission(StatusBad.this,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
+                try {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:911"));
+                    callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(callIntent);
+                } catch (ActivityNotFoundException activityException) {
+                    Log.e("Calling a Phone Number", "Call failed", activityException);
+                } catch (SecurityException secEx){
+                    Log.e("Calling a Phone Number", "Security Exception", secEx);
                 }
-                startActivity(emsIntent);
-
             }
 
         });
