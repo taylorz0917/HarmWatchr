@@ -46,13 +46,9 @@ public class StatusBad extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString("message");
 
-        if(message != null) {
-            String[] tokens = message.split(" ");
-            longitude = Float.parseFloat(tokens[0]);
-            latitude = Float.parseFloat(tokens[1]);
+        final String geoLocation = message;
+        System.out.println(geoLocation);
 
-            System.out.println("latitude: "+latitude+" longitude: "+longitude);
-        }
         setContentView(R.layout.activity_status_bad);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -83,7 +79,7 @@ public class StatusBad extends AppCompatActivity {
 
                 //Open people view
                 Intent activity_peopleIntent = new Intent(StatusBad.this, People.class);
-                StatusBad.this.startActivity(activity_peopleIntent);
+                startActivity(activity_peopleIntent);
             }
 
         });
@@ -93,9 +89,9 @@ public class StatusBad extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //input latitude, longitude from database
-                String uri = String.format(Locale.getDefault(),"geo:%f,%f",longitude, latitude);
-                Intent locate_Intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                StatusBad.this.startActivity(locate_Intent);
+                Intent locate_Intent = new Intent(Intent.ACTION_VIEW);
+                locate_Intent.setData(Uri.parse("geo:"+geoLocation));
+                startActivity(locate_Intent);
             }
         });
 

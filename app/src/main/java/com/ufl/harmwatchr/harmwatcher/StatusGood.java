@@ -44,13 +44,11 @@ public class StatusGood extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString("message");
-
+        String geoLocation;
         if(message != null) {
-            String[] tokens = message.split(" ");
-            longitude = Float.parseFloat(tokens[0]);
-            latitude = Float.parseFloat(tokens[1]);
 
-            System.out.println("latitude: "+latitude+" longitude: "+longitude);
+            geoLocation = message;
+            System.out.println(geoLocation);
         }
         setContentView(R.layout.activity_status_good);
 

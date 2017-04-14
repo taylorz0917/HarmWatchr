@@ -157,7 +157,7 @@ public class People extends AppCompatActivity  {
                 boolean childInDanger;
                 try {
                     childInDanger = heartRateData(firstName, lastName, ageInMonths, idString);
-                    String message = (longitude)+" "+(latitude);
+                    String message = (latitude)+","+(longitude);
                     if (!childInDanger) {
                         Intent activity_peopleIntent_statusGood = new Intent(People.this, StatusGood.class);
                         activity_peopleIntent_statusGood.putExtra("message",message);
