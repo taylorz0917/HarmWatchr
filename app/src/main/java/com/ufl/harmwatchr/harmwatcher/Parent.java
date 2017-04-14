@@ -1,10 +1,15 @@
 package com.ufl.harmwatchr.harmwatcher;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Zak Taylor on 4/12/2017.
  */
 
-public class Parent {
+public class Parent implements Parcelable {
+    static String CREATOR;
+
     private String email;
     private String firstName;
     private String lastName;
@@ -124,4 +129,13 @@ public class Parent {
         this.child3ID = child3ID;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

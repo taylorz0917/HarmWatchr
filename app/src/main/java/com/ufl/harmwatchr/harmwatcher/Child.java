@@ -1,14 +1,18 @@
 package com.ufl.harmwatchr.harmwatcher;
 
 
-public class Child  {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Child implements Parcelable {
+    static String CREATOR;
     public String firstName;
     public String lastName;
-//    private int childAgeInMonths;
-//    private String parentId;
-//    private int avgHeartRate;
-//    private double latitude;
-//    private double longitude;
+    public String childAgeInMonths;
+    private String parentId;
+    private int avgHeartRate;
+    private double latitude;
+    private double longitude;
 
     public Child() {
 
@@ -37,55 +41,64 @@ public class Child  {
         this.lastName = childLastName;
 
     }
-//
-//    public int getChildAgeInMonths() {
-//        return childAgeInMonths;
-//
-//    }
-//
-//    public void setChildAgeInMonths(int childAgeInMonths) {
-//        this.childAgeInMonths = childAgeInMonths;
-//
-//    }
-//
-//    public String getParentId() {
-//        return parentId;
-//
-//    }
-//
-//    public void setParentId(String parentId) {
-//        this.parentId = parentId;
-//
-//    }
-//
-//    public int getAvgHeartRate() {
-//        return avgHeartRate;
-//
-//    }
-//
-//    public void setAvgHeartRate(int avgHeartRate) {
-//        this.avgHeartRate = avgHeartRate;
-//
-//    }
-//
-//    public double getLatitude() {
-//        return latitude;
-//
-//    }
-//
-//    public void setLatitude(double latitude) {
-//        this.latitude = latitude;
-//
-//    }
-//
-//    public double getLongitude() {
-//        return longitude;
-//
-//    }
-//
-//    public void setLongitude(double longitude) {
-//        this.longitude = longitude;
-//
-//    }
+
+    public String getChildAgeInMonths() {
+            return childAgeInMonths;
+
+    }
+
+    public void setChildAgeInMonths(String childAgeInMonths) {
+            this.childAgeInMonths = childAgeInMonths;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
+
+    public String getParentId() {
+        return parentId;
+
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+
+    }
+
+    public int getAvgHeartRate() {
+        return avgHeartRate;
+
+    }
+
+    public void setAvgHeartRate(int avgHeartRate) {
+        this.avgHeartRate = avgHeartRate;
+
+    }
+
+    public double getLatitude() {
+        return latitude;
+
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+
+    }
+
+    public double getLongitude() {
+        return longitude;
+
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+
+    }
 
 }
