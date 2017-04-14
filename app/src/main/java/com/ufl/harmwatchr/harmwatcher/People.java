@@ -157,12 +157,14 @@ public class People extends AppCompatActivity  {
                 boolean childInDanger;
                 try {
                     childInDanger = heartRateData(firstName, lastName, ageInMonths, idString);
-
+                    String message = (longitude)+" "+(latitude);
                     if (!childInDanger) {
                         Intent activity_peopleIntent_statusGood = new Intent(People.this, StatusGood.class);
+                        activity_peopleIntent_statusGood.putExtra("message",message);
                         People.this.startActivity(activity_peopleIntent_statusGood);
                     } else {
                         Intent activity_peopleIntent_statusBad = new Intent(People.this, StatusBad.class);
+                        activity_peopleIntent_statusBad.putExtra("message",message);
                         People.this.startActivity(activity_peopleIntent_statusBad);
                     }
                 } catch (MalformedURLException e) {

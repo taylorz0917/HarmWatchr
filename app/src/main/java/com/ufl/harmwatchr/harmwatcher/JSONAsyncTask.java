@@ -8,10 +8,6 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-/**
- * Created by brianroytman on 4/13/17.
- */
-
 public class JSONAsyncTask extends AsyncTask<String, Void, String> {
     HttpURLConnection connection = null;
     BufferedReader reader = null;

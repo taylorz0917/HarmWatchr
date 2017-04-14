@@ -26,4 +26,5 @@
     <string name="emergency_contact_fname">Emergency Contact First</string>
     <string name="e_c_last_name">E.C. Last Name</string>
     <string name="e_c_phone_number">E.C. Phone number</string>
+    <string name="age_in_months">Age In Months</string>
 </resources>
