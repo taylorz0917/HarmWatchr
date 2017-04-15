@@ -90,47 +90,32 @@ public class People extends AppCompatActivity  {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Parent parentData = dataSnapshot.child("Users").child(userID).getValue(Parent.class);
-                idString = parentData.getChild1ID();
-
-                System.out.println(parentData.getChild1ID());
-                System.out.println(idString);
-                try {
-                    if (parentData.getNumChildren() > 0) {
-                        Child child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
-                        firstName = child1Data.getChildFirstName();
-                        lastName = child1Data.getChildLastName();
-                        ageString = child1Data.getChildAgeInMonths();
-                        ageInMonths = Integer.parseInt(ageString);
-
-
-
-                        System.out.println("Child info: " + firstName + " " + lastName);
-
-                    }
-                } catch (NumberFormatException n) {
-                    n.printStackTrace();
-                }
-
-                if(parentData!=null) {
-                    System.out.println("User: " + userID + " Data: " + parentData.getFirstName() + " " + parentData.getLastName() +" "+ parentData.getNumChildren()+" "+ parentData.getPhone());
-                    System.out.println("User: " + userID + " Emergency Contact info: " + parentData.getEmergencyContactFirstName() + " " + parentData.getEmergencyContactLastName() +" "+ parentData.getEmergencyContactPhone());
-                    switch(parentData.getNumChildren()){
-                        case 0:
-                            System.out.println("No children yet.");
-                            break;
+                System.out.println("User: " + userID + " Data: " + parentData.getFirstName() + " " + parentData.getLastName() +" "+ parentData.getNumChildren()+" "+ parentData.getPhone());
+                System.out.println("User: " + userID + " Emergency Contact info: " + parentData.getEmergencyContactFirstName() + " " + parentData.getEmergencyContactLastName() +" "+ parentData.getEmergencyContactPhone());
+                final int children = parentData.getNumChildren();
+                Child child1Data, child2Data, child3Data;
+                if(children > 0) {
+                    switch(children){
                         case 1:
-                            System.out.println("Child1ID: "+parentData.getChild1ID());
+                            child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                            System.out.println(child1Data.getChildFirstName() + " "+ child1Data.getChildLastName() + " " + child1Data.getChildAgeInMonths() + " " + child1Data.getParentId());
                             break;
                         case 2:
-                            System.out.println("Child1ID: "+ idString +"Child2ID: "+parentData.getChild2ID());
+                            child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                            child2Data = dataSnapshot.child("Children").child(parentData.getChild2ID()).getValue(Child.class);
+                            System.out.println(child1Data.getChildFirstName() + " "+ child1Data.getChildLastName() + " " + child1Data.getChildAgeInMonths() + " " + child1Data.getParentId());
+                            System.out.println(child2Data.getChildFirstName() + " "+ child2Data.getChildLastName() + " " + child2Data.getChildAgeInMonths() + " " + child2Data.getParentId());
                             break;
                         case 3:
-                            System.out.println("Child1ID: "+parentData.getChild1ID()+"Child2ID: "+parentData.getChild2ID()+"Child3ID: "+parentData.getChild3ID());
+                            child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                            child2Data = dataSnapshot.child("Children").child(parentData.getChild2ID()).getValue(Child.class);
+                            child3Data = dataSnapshot.child("Children").child(parentData.getChild3ID()).getValue(Child.class);
+                            System.out.println(child1Data.getChildFirstName() + " "+ child1Data.getChildLastName() + " " + child1Data.getChildAgeInMonths() + " " + child1Data.getParentId());
+                            System.out.println(child2Data.getChildFirstName() + " "+ child2Data.getChildLastName() + " " + child2Data.getChildAgeInMonths() + " " + child2Data.getParentId());
+                            System.out.println(child3Data.getChildFirstName() + " "+ child3Data.getChildLastName() + " " + child3Data.getChildAgeInMonths() + " " + child3Data.getParentId());
                             break;
                     }
                 }
-                else
-                    System.out.println("Null parent data.");
             }
 
             @Override
@@ -199,6 +184,7 @@ public class People extends AppCompatActivity  {
             @Override
             public void onClick(View v){
                 //Open login view
+                mAuth.signOut();
                 Intent activity_peopleIntent = new Intent(People.this, Login.class);
                 People.this.startActivity(activity_peopleIntent);
             }

@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Child implements Parcelable {
-    static String CREATOR;
+    public String CREATOR;
     public String firstName;
     public String lastName;
-    public String childAgeInMonths;
+    public String ageInMonths;
     private String parentId;
     private int avgHeartRate;
     private double latitude;
@@ -15,10 +15,6 @@ public class Child implements Parcelable {
 
     public Child() {
 
-    }
-    public Child(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     public String getChildFirstName() {
@@ -42,12 +38,12 @@ public class Child implements Parcelable {
     }
 
     public String getChildAgeInMonths() {
-            return childAgeInMonths;
+            return ageInMonths;
 
     }
 
     public void setChildAgeInMonths(String childAgeInMonths) {
-            this.childAgeInMonths = childAgeInMonths;
+            this.ageInMonths = childAgeInMonths;
     }
 
     @Override
