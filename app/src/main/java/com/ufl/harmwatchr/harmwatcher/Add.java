@@ -16,8 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.UUID;
 
@@ -30,9 +33,12 @@ public class Add extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase mFirebaseDatabase;
     private String userID;
+    private String userSameId;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    int numChildren;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws NumberFormatException {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
@@ -48,10 +54,34 @@ public class Add extends AppCompatActivity {
         lname = (EditText) findViewById(R.id.last_name);
         final Button activity_backButton = (Button) findViewById(R.id.back);
 
+        //Bundle bundle = getIntent().getExtras();
+        //String numChildString = bundle.getString("numChildren");
+        //System.out.println("Number of Children as string: " + numChildString);
+
+        //numChildren = Integer.parseInt(numChildString);
+        //System.out.println("numChildren: " + numChildren);
+
+        final FirebaseUser userSame = mAuth.getCurrentUser();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userSameId = userSame.getUid();
+                Parent parentDataFresh = dataSnapshot.child("Users").child(userSameId).getValue(Parent.class);
+                numChildren = parentDataFresh.getNumChildren();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.print("Failed to read.");
+            }
+        });
+
+
         activity_peopleLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerChild();
+                registerChild(numChildren);
 
                 Intent activity_peopleIntent = new Intent(Add.this, People.class);
                 Add.this.startActivity(activity_peopleIntent);
@@ -71,7 +101,8 @@ public class Add extends AppCompatActivity {
 
     }
 
-    private void registerChild() {
+
+    private void registerChild(int numChildren) {
         final String first = fname.getText().toString().trim();
         final String last = lname.getText().toString().trim();
         final String ageInMonths = age.getText().toString().trim();
@@ -87,6 +118,7 @@ public class Add extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
         if(user!=null) {
+            Parent updateParent = new Parent();
             String uniqueID = UUID.randomUUID().toString();
             myRef.child("Children").child(uniqueID).child("firstName").setValue(first);
             myRef.child("Children").child(uniqueID).child("lastName").setValue(last);
@@ -94,6 +126,28 @@ public class Add extends AppCompatActivity {
 
             userID = user.getUid();
             myRef.child("Children").child(uniqueID).child("parentID").setValue(userID);
+
+
+            System.out.println("Number of Children: " + numChildren);
+            if(numChildren == 0) {
+                myRef.child("Users").child(userID).child("child1ID").setValue(uniqueID);
+                myRef.child("Users").child(userID).child("numChildren").setValue(1);
+                //updateParent.setChild1ID(uniqueID);
+
+
+            }
+
+            else if (numChildren == 1) {
+                myRef.child("Users").child(userID).child("child2ID").setValue(uniqueID);
+                myRef.child("Users").child(userID).child("numChildren").setValue(2);
+
+            }
+
+            else {
+                myRef.child("Users").child(userID).child("child3ID").setValue(uniqueID);
+                myRef.child("Users").child(userID).child("numChildren").setValue(3);
+            }
+
         }
         else{
             System.out.println("User is not signed in.");

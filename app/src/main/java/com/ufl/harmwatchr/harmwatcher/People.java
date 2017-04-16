@@ -28,6 +28,9 @@ import android.os.*;
 
 public class People extends AppCompatActivity  {
 
+    //Parent parentData;
+    //int children;
+
     private static final String TAG = "People";
 
     /* Firebase initialization  */
@@ -38,13 +41,34 @@ public class People extends AppCompatActivity  {
     private  String userID;
 
 
-    /* Global variables to be populated when creating Child objects */
-    String firstName;
-    String lastName;
-    String idString;
-    String ageString;
-    int    ageInMonths;
-    int avgHeartRate;
+
+    String setParentIDChild1;
+    String setParentIDChild2;
+    String setParentIDChild3;
+
+    /* Global variables to be populated
+    when creating Child objects */
+    String firstNameChild1;
+    String lastNameChild1;
+    String idStringChild1;
+    String ageStringChild1;
+    int    ageInMonthsChild1;
+    int avgHeartRateChild1;
+
+    String firstNameChild2;
+    String lastNameChild2;
+    String idStringChild2;
+    String ageStringChild2;
+    int    ageInMonthsChild2;
+    int avgHeartRateChild2;
+
+    String firstNameChild3;
+    String lastNameChild3;
+    String idStringChild3;
+    String ageStringChild3;
+    int    ageInMonthsChild3;
+    int avgHeartRateChild3;
+
     double    latitude;
     double    longitude;
 
@@ -61,6 +85,19 @@ public class People extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_people);
 
+        //for loop of people being watched by user... generate activity_peopleLink button
+        // add ability to click more people buttons
+
+
+        final Button activity_peopleLink1 = (Button) findViewById(R.id.Person1);
+        final Button activity_peopleLink2 = (Button) findViewById(R.id.Person2);
+        final Button activity_peopleLink3 = (Button) findViewById(R.id.Person3);
+
+
+
+        final Button activity_signoutLink = (Button) findViewById(R.id.signout);
+        final Button activity_addLink = (Button) findViewById(R.id.AddPerson);
+
         //declare the database reference object. This is what we use to access the database.
         //NOTE: Unless you are signed in, this will not be useable.
         mAuth = FirebaseAuth.getInstance();
@@ -69,6 +106,7 @@ public class People extends AppCompatActivity  {
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
+
 
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -90,31 +128,93 @@ public class People extends AppCompatActivity  {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Parent parentData = dataSnapshot.child("Users").child(userID).getValue(Parent.class);
+
+                //Parent parentData = dataSnapshot.child("Users").child(userID).getValue(Parent.class);
                 System.out.println("User: " + userID + " Data: " + parentData.getFirstName() + " " + parentData.getLastName() +" "+ parentData.getNumChildren()+" "+ parentData.getPhone());
                 System.out.println("User: " + userID + " Emergency Contact info: " + parentData.getEmergencyContactFirstName() + " " + parentData.getEmergencyContactLastName() +" "+ parentData.getEmergencyContactPhone());
-                final int children = parentData.getNumChildren();
+                int children = parentData.getNumChildren();
                 Child child1Data, child2Data, child3Data;
                 if(children > 0) {
                     switch(children){
                         case 1:
+                            //parentData.setChild1ID();
                             child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                            firstNameChild1 = child1Data.getChildFirstName();
+                            lastNameChild1 = child1Data.getChildLastName();
+                            child1Data.setParentId(userID);
+                            idStringChild1 = child1Data.getParentId();
+                            ageStringChild1 = child1Data.getChildAgeInMonths();
+                            ageInMonthsChild1 = Integer.parseInt(ageStringChild1);
+                            activity_peopleLink1.setText(firstNameChild1);
+                            activity_peopleLink2.setVisibility(View.GONE);
+                            activity_peopleLink3.setVisibility(View.GONE);
+
                             System.out.println(child1Data.getChildFirstName() + " "+ child1Data.getChildLastName() + " " + child1Data.getChildAgeInMonths() + " " + child1Data.getParentId());
                             break;
+
                         case 2:
                             child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                            firstNameChild1 = child1Data.getChildFirstName();
+                            lastNameChild1 = child1Data.getChildLastName();
+                            child1Data.setParentId(userID);
+                            idStringChild1 = child1Data.getParentId();
+                            ageStringChild1 = child1Data.getChildAgeInMonths();
+                            ageInMonthsChild1 = Integer.parseInt(ageStringChild1);
+                            activity_peopleLink1.setText(firstNameChild1);
+
+
                             child2Data = dataSnapshot.child("Children").child(parentData.getChild2ID()).getValue(Child.class);
+                            firstNameChild2 = child2Data.getChildFirstName();
+                            lastNameChild2 = child2Data.getChildLastName();
+                            child2Data.setParentId(userID);
+                            idStringChild2 = child2Data.getParentId();
+                            ageStringChild2 = child2Data.getChildAgeInMonths();
+                            ageInMonthsChild2 = Integer.parseInt(ageStringChild1);
+                            activity_peopleLink2.setText(firstNameChild2);
+                            activity_peopleLink3.setVisibility(View.GONE);
+
                             System.out.println(child1Data.getChildFirstName() + " "+ child1Data.getChildLastName() + " " + child1Data.getChildAgeInMonths() + " " + child1Data.getParentId());
                             System.out.println(child2Data.getChildFirstName() + " "+ child2Data.getChildLastName() + " " + child2Data.getChildAgeInMonths() + " " + child2Data.getParentId());
                             break;
                         case 3:
                             child1Data = dataSnapshot.child("Children").child(parentData.getChild1ID()).getValue(Child.class);
+                            firstNameChild1 = child1Data.getChildFirstName();
+                            lastNameChild1 = child1Data.getChildLastName();
+                            child1Data.setParentId(userID);
+                            idStringChild1 = child1Data.getParentId();
+                            ageStringChild1 = child1Data.getChildAgeInMonths();
+                            ageInMonthsChild1 = Integer.parseInt(ageStringChild1);
+                            activity_peopleLink1.setText(firstNameChild1);
+
                             child2Data = dataSnapshot.child("Children").child(parentData.getChild2ID()).getValue(Child.class);
+                            firstNameChild2 = child2Data.getChildFirstName();
+                            lastNameChild2 = child2Data.getChildLastName();
+                            child2Data.setParentId(userID);
+                            idStringChild2 = child2Data.getParentId();
+                            ageStringChild2 = child2Data.getChildAgeInMonths();
+                            ageInMonthsChild2 = Integer.parseInt(ageStringChild1);
+                            activity_peopleLink2.setText(firstNameChild2);
+
                             child3Data = dataSnapshot.child("Children").child(parentData.getChild3ID()).getValue(Child.class);
+                            firstNameChild3 = child3Data.getChildFirstName();
+                            lastNameChild3 = child3Data.getChildLastName();
+                            child3Data.setParentId(userID);
+                            idStringChild3 = child3Data.getParentId();
+                            ageStringChild3 = child3Data.getChildAgeInMonths();
+                            ageInMonthsChild3 = Integer.parseInt(ageStringChild1);
+                            activity_peopleLink3.setText(firstNameChild3);
+                            activity_addLink.setVisibility(View.GONE);
+
                             System.out.println(child1Data.getChildFirstName() + " "+ child1Data.getChildLastName() + " " + child1Data.getChildAgeInMonths() + " " + child1Data.getParentId());
                             System.out.println(child2Data.getChildFirstName() + " "+ child2Data.getChildLastName() + " " + child2Data.getChildAgeInMonths() + " " + child2Data.getParentId());
                             System.out.println(child3Data.getChildFirstName() + " "+ child3Data.getChildLastName() + " " + child3Data.getChildAgeInMonths() + " " + child3Data.getParentId());
                             break;
                     }
+                } else {
+                    activity_peopleLink1.setVisibility(View.GONE);
+                    activity_peopleLink2.setVisibility(View.GONE);
+                    activity_peopleLink3.setVisibility(View.GONE);
+
                 }
             }
 
@@ -125,23 +225,19 @@ public class People extends AppCompatActivity  {
         });
 
 
-        //for loop of people being watched by user... generate activity_peopleLink button
-        // add ability to click more people buttons
-        final Button activity_peopleLink = (Button) findViewById(R.id.Person1);
-        final Button activity_signoutLink = (Button) findViewById(R.id.signout);
-        final Button activity_addLink = (Button) findViewById(R.id.AddPerson);
 
 
 
-        //If Person is chosen -> Check their status.
-        activity_peopleLink.setOnClickListener(new View.OnClickListener() {
+
+        //If Person 1 is chosen -> Check their status.
+        activity_peopleLink1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
                 /*CALL HEART RATE/PARSE JSON METHOD */
                 boolean childInDanger;
                 try {
-                    childInDanger = heartRateData(firstName, lastName, ageInMonths, idString);
+                    childInDanger = heartRateData(firstNameChild1, lastNameChild1, ageInMonthsChild1, idStringChild1);
                     String message = (latitude)+","+(longitude);
                     if (!childInDanger) {
                         Intent activity_peopleIntent_statusGood = new Intent(People.this, StatusGood.class);
@@ -167,13 +263,83 @@ public class People extends AppCompatActivity  {
 
         });
 
+        //If Person 1 is chosen -> Check their status.
+        activity_peopleLink2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                /*CALL HEART RATE/PARSE JSON METHOD */
+                boolean childInDanger;
+                try {
+                    childInDanger = heartRateData(firstNameChild2, lastNameChild2, ageInMonthsChild2, idStringChild2);
+                    String message = (latitude)+","+(longitude);
+                    if (!childInDanger) {
+                        Intent activity_peopleIntent_statusGood = new Intent(People.this, StatusGood.class);
+                        activity_peopleIntent_statusGood.putExtra("message",message);
+                        People.this.startActivity(activity_peopleIntent_statusGood);
+                    } else {
+                        Intent activity_peopleIntent_statusBad = new Intent(People.this, StatusBad.class);
+                        activity_peopleIntent_statusBad.putExtra("message",message);
+                        People.this.startActivity(activity_peopleIntent_statusBad);
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (JSONException j) {
+                    j.printStackTrace();
+                } catch (InterruptedException ix) {
+                    ix.printStackTrace();
+                } catch (ExecutionException exe) {
+                    exe.printStackTrace();
+                }
+            }
+
+        });
+
+        //If Person 1 is chosen -> Check their status.
+        activity_peopleLink3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                /*CALL HEART RATE/PARSE JSON METHOD */
+                boolean childInDanger;
+                try {
+                    childInDanger = heartRateData(firstNameChild3, lastNameChild3, ageInMonthsChild3, idStringChild3);
+                    String message = (latitude)+","+(longitude);
+                    if (!childInDanger) {
+                        Intent activity_peopleIntent_statusGood = new Intent(People.this, StatusGood.class);
+                        activity_peopleIntent_statusGood.putExtra("message",message);
+                        People.this.startActivity(activity_peopleIntent_statusGood);
+                    } else {
+                        Intent activity_peopleIntent_statusBad = new Intent(People.this, StatusBad.class);
+                        activity_peopleIntent_statusBad.putExtra("message",message);
+                        People.this.startActivity(activity_peopleIntent_statusBad);
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (JSONException j) {
+                    j.printStackTrace();
+                } catch (InterruptedException ix) {
+                    ix.printStackTrace();
+                } catch (ExecutionException exe) {
+                    exe.printStackTrace();
+                }
+            }
+
+        });
 
         //If Add is chosen.
         activity_addLink.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //Open add view
+                //myRef.child("Users").child(userID).child("numChildren");
+                //String childString = String.valueOf(children);
                 Intent activity_peopleIntent = new Intent(People.this, Add.class);
+                //activity_peopleIntent.putExtra("numChildren", );
                 People.this.startActivity(activity_peopleIntent);
             }
 
@@ -240,7 +406,7 @@ public class People extends AppCompatActivity  {
 
         int averageHeartRate = calcAvgHeartRate(heartRateHolder);
         System.out.println("Average Heart Rate: " + averageHeartRate);
-        inDanger = compareAverageHeartRate(averageHeartRate, age );
+        inDanger = compareAverageHeartRate(averageHeartRate, age);
 
         return inDanger;
     }
