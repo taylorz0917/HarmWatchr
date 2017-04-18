@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.*;
 import android.content.pm.PackageManager;
 import android.Manifest;
 import android.support.v4.app.ActivityCompat;
@@ -19,21 +19,31 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-/*
-import java.util.*;
-import com.twilio.sdk.*;
-import com.twilio.sdk.resource.factory.*;
-import com.twilio.sdk.resource.instance.*;
-import com.twilio.sdk.resource.list.*;
-*/
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.support.v4.app.NotificationCompat;
+import android.content.Context;
+
+
+import android.support.v4.content.ContextCompat;
+import android.telephony.SmsManager;
 
 import java.util.Locale;
 
 public class StatusBad extends AppCompatActivity {
 
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0 ;
+    String phoneNo;
+    String message;
+    String personNotificationMsg;
+    String alertMessage;
+
+
     private float longitude, latitude;
 
-    private String ecPhoneNumber, userID;
+    private String ecPhoneNumber, userID, firstName, lastName, carYear, carMake, carModel, carColor,
+            licensePlate;
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase mFirebaseDatabase;
@@ -63,20 +73,52 @@ public class StatusBad extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Parent parentData = dataSnapshot.child("Users").child(userID).getValue(Parent.class);
                 ecPhoneNumber = parentData.getEmergencyContactPhone();
+                firstName = parentData.getFirstName();
+                lastName = parentData.getLastName();
+                carYear = parentData.getCarYear();
+                carMake = parentData.getCarMake();
+                carModel = parentData.getCarModel();
+                carColor = parentData.getCarColor();
+                licensePlate = parentData.getLicensePlate();
 
                 System.out.println("Emergency contact # :"+ecPhoneNumber);
+
+                personNotificationMsg = "Your child may be in danger, check on them!";
+
+                alertMessage = firstName + " " +  lastName + "'s child is experiencing an abnormally high heart rate at location: " +
+                        geoLocation + " in a " + carColor + " " + carYear + " " +
+                        carMake + " " + carModel + " with license plate: " + licensePlate + ". Please take action.";
+
+                System.out.println(personNotificationMsg);
+                System.out.println(alertMessage);
+
+                addNotification(personNotificationMsg);
+                sendSMSMessageToEmergencyContact(alertMessage);
+                sendSMSMessageToEMS(alertMessage);
+
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
+
+
+
+
         });
+
+
+
+
 
         final Button activity_peopleLink = (Button) findViewById(R.id.back);
         final Button locate = (Button) findViewById(R.id.location);
         final Button call = (Button) findViewById(R.id.call);
         final Button ems = (Button) findViewById(R.id.ems);
+
 
 
         //If Back is pressed. (DONE)
@@ -142,5 +184,83 @@ public class StatusBad extends AppCompatActivity {
 
 
     }
+
+    private void addNotification(String alertMsg) {
+
+        System.out.println(alertMsg);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.common_full_open_on_phone)
+                        .setContentTitle("HarmwatchER ALERT!")
+                        .setContentText(alertMsg);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
+    }
+
+
+    private void sendSMSMessageToEmergencyContact(String alertMsg) {
+        phoneNo = "6505551212";
+        message = alertMsg;
+
+        System.out.println(message);
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.SEND_SMS)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+    }
+
+
+    /* SHOULD IMPLEMENT ON TIMER FOR 10 MINUTES AFTER INITIAL HEART RATE "INCIDENT" READING
+    IF NO RESPONSE TAKEN.
+     */
+    private void sendSMSMessageToEMS(String alertMsg) {
+        phoneNo = "911";
+        message = alertMsg;
+
+        System.out.println(message);
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.SEND_SMS)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phoneNo, null, message, null, null);
+                    Toast.makeText(getApplicationContext(), "SMS sent.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+
+    }
+
 
 }

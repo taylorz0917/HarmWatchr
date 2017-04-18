@@ -10,6 +10,11 @@ public class Parent implements Parcelable {
     private String firstName;
     private String lastName;
     private String phone;
+    private String carYear;
+    private String carMake;
+    private String carModel;
+    private String carColor;
+    private String licensePlate;
     private int numChildren;
     private String emergencyContactFirstName;
     private String emergencyContactLastName;
@@ -67,6 +72,53 @@ public class Parent implements Parcelable {
     public void setPhone(String phone){
         this.phone = phone;
     }
+
+
+
+
+    public String getCarYear(){
+        return carYear;
+    }
+
+    public void setCarYear(String carYear){
+        this.carYear = carYear;
+    }
+
+    public String getCarMake(){
+        return carMake;
+    }
+
+    public void setCarMake(String carMake){
+        this.carMake = carMake;
+    }
+
+    public String getCarModel(){
+        return carModel;
+    }
+
+    public void setCarModel(String carModel){
+        this.carModel = carModel;
+    }
+
+    public String getCarColor(){
+        return carColor;
+    }
+
+    public void setCarColor(String carColor){
+        this.carColor = carColor;
+    }
+
+
+    public String getLicensePlate(){
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate){
+        this.licensePlate = licensePlate;
+    }
+
+
+
 
     public int getNumChildren() {
         return numChildren;

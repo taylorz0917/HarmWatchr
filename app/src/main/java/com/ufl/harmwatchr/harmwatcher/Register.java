@@ -16,11 +16,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText email, password, first_name, last_name, phone, ecFirst, ecLast, ecNumber;
+    private EditText email, password, first_name, last_name, phone,
+            carYear, carMake, carModel, carColor, licensePlate, ecFirst, ecLast, ecNumber;
     private ProgressDialog progressDialog;
 
     private DatabaseReference myRef;
@@ -47,6 +47,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         phone = (EditText) findViewById(R.id.phone);
+        carYear = (EditText) findViewById(R.id.carYear);
+        carMake = (EditText) findViewById(R.id.carMake);
+        carModel = (EditText) findViewById(R.id.carModel);
+        carColor = (EditText) findViewById(R.id.carColor);
+        licensePlate = (EditText) findViewById(R.id.licensePlate);
         ecFirst = (EditText) findViewById(R.id.emergencyContactFName);
         ecLast = (EditText) findViewById(R.id.emergencyContactLName);
         ecNumber = (EditText) findViewById(R.id.emergencyContactPhone);
@@ -76,6 +81,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         final String last = last_name.getText().toString().trim();
         final String first = first_name.getText().toString().trim();
         final String ph = phone.getText().toString().trim();
+
+        final String cYear = carYear.getText().toString().trim();
+        final String cMake = carMake.getText().toString().trim();
+        final String cModel = carModel.getText().toString().trim();
+        final String cColor = carColor.getText().toString().trim();
+        final String licPlate = licensePlate.getText().toString().trim();
+
+
         final String ecPhoneNumber = ecNumber.getText().toString().trim();
         final String ecFName = ecFirst.getText().toString().trim();
         final String ecLName = ecLast.getText().toString().trim();
@@ -111,6 +124,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     myRef.child("Users").child(userID).child("firstName").setValue(first);
                     myRef.child("Users").child(userID).child("lastName").setValue(last);
                     myRef.child("Users").child(userID).child("phone").setValue(ph);
+
+                    myRef.child("Users").child(userID).child("carYear").setValue(cYear);
+                    myRef.child("Users").child(userID).child("carMake").setValue(cMake);
+                    myRef.child("Users").child(userID).child("carModel").setValue(cModel);
+                    myRef.child("Users").child(userID).child("carColor").setValue(cColor);
+                    myRef.child("Users").child(userID).child("licensePlate").setValue(licPlate);
+
                     myRef.child("Users").child(userID).child("emergencyContactFirstName").setValue(ecFName);
                     myRef.child("Users").child(userID).child("emergencyContactLastName").setValue(ecLName);
                     myRef.child("Users").child(userID).child("emergencyContactPhone").setValue(ecPhoneNumber);
