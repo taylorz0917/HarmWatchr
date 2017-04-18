@@ -38,7 +38,7 @@ public class StatusBad extends AppCompatActivity {
     String message;
     String personNotificationMsg;
     String alertMessage;
-
+    private TextView statusMsg;
 
     private float longitude, latitude;
 
@@ -83,7 +83,7 @@ public class StatusBad extends AppCompatActivity {
 
                 System.out.println("Emergency contact # :"+ecPhoneNumber);
 
-                personNotificationMsg = "Your child may be in danger, check on them!";
+                personNotificationMsg = firstName + ", your child may be in danger - check on them!";
 
                 alertMessage = firstName + " " +  lastName + "'s child is experiencing an abnormally high heart rate at location: " +
                         geoLocation + " in a " + carColor + " " + carYear + " " +
@@ -118,7 +118,8 @@ public class StatusBad extends AppCompatActivity {
         final Button locate = (Button) findViewById(R.id.location);
         final Button call = (Button) findViewById(R.id.call);
         final Button ems = (Button) findViewById(R.id.ems);
-
+        statusMsg = (TextView) findViewById(R.id.status);
+        statusMsg.setText("Elevated Heart Rate Detected");
 
 
         //If Back is pressed. (DONE)
